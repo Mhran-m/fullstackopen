@@ -12,18 +12,26 @@ const Header = (props) => {
   )
 }
 const Content = (props) => {
-  console.log('received props.name: ' + props.parts);
+  console.log('received props.name: ' + props.partsOfContent);
   return (
     <div>
-      <p> {props.parts[0].name}{props.parts[0].exercises}</p>
+      <p> {props.partsOfContent[0].name}{props.partsOfContent[0].exercises}</p>
 
-      <p>{props.parts[1].name}{props.parts[1].exercises}</p>
+      <p>{props.partsOfContent[1].name}{props.partsOfContent[1].exercises}</p>
 
-      <p> {props.parts[2].name}{props.parts[2].exercises}</p>
+      <p> {props.partsOfContent[2].name}{props.partsOfContent[2].exercises}</p>
     </div>
   )
 }
+const Total = (props)=> {
+return(
+  <p>Number of exercises {props.partsOfTotal[0].exercises + props.partsOfTotal[1].exercises +props.partsOfTotal[2].exercises}</p>
+
+)
+
+}
 const App = () => {
+  
   const course = {
     name: "Half Half Stack application development",
 
@@ -44,12 +52,11 @@ const App = () => {
   }
 
 
-
   return (
     <div>
       <Header courseName={course.name} />
-      <Content parts={course.parts} />
-      <p>Number of exercises {course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises}</p>
+      <Content partsOfContent={course.parts} />
+      <Total partsOfTotal={course.parts} />
     </div>
   )
 }
